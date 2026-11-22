@@ -46,22 +46,17 @@ func _ready() -> void:
 func _add_rules() -> void:
 	var rules := Label.new()
 	rules.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	rules.position = Vector2(520, 108)
-	rules.size = Vector2(240, 380)
-	rules.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	rules.add_theme_font_size_override("font_size", 16)
+	rules.position = Vector2(95, 512)
+	rules.size = Vector2(400, 118)
+	rules.autowrap_mode = TextServer.AUTOWRAP_OFF
+	rules.add_theme_font_size_override("font_size", 15)
+	rules.add_theme_constant_override("line_spacing", 3)
 	rules.add_theme_color_override("font_color", Color(0.85, 0.96, 1, 1))
-	rules.text = "Rules
-
-Fill every empty cell with 0 or 1.
-
-Each row and each column has five 0s and five 1s.
-
-No more than two of the same number may sit next to each other.
-
-No two rows may be the same, and no two columns may be the same.
-
-Click a cell to cycle blank, 0, then 1."
+	rules.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	rules.text = "Fill blanks with 0 or 1.  Click to cycle.
+Five 0s and five 1s in every row and column.
+No more than two identical numbers in a row.
+No duplicate rows or columns."
 	add_child(rules)
 
 func spawn_text_fields():
