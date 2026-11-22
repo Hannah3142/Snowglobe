@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://jcys1uces8gp" path="res://assets/IMG_1825.hJaIesRk.PNG" id="1_q6r6c"]
 [ext_resource type="Script" uid="uid://web3esrpo87n" path="res://character_body_2d.gd" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://bb1sc1efhdkhe" path="res://assets/pixil-frame-0 (copy 1).png" id="5_q6r6c"]
-[ext_resource type="PackedScene" uid="uid://bhubgamedocks1" path="res://hub_ui.tscn" id="6_hub"]
-[ext_resource type="PackedScene" uid="uid://cgameboxsnow01" path="res://game_box.tscn" id="7_box"]
-[ext_resource type="PackedScene" uid="uid://bfreezemeter01" path="res://freeze_meter.tscn" id="8_freeze"]
+[ext_resource type="PackedScene" uid="uid://c67qd16t1bs8e" path="res://hub_ui.tscn" id="6_hub"]
+[ext_resource type="PackedScene" uid="uid://tut3mh0wubmi" path="res://game_box.tscn" id="7_box"]
+[ext_resource type="PackedScene" uid="uid://4bo3tfu6d1ge" path="res://freeze_meter.tscn" id="8_freeze"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_kdubu"]
 
@@ -126,9 +126,9 @@ scale = Vector2(14.788245, 16.902922)
 polygon = PackedVector2Array(49.061832, 66.43274, -39.698887, 59.45578, -57.37613, -22.675102, 19.325119, -19.944988, 32.95757, -18.428259, 43.668774, -21.158371, 45.990788, -10.768776, 48.088085, -3.7918224, 51.009327, 21.158371, 55.653347, 28.05949, 59.997753, 29.197037, 66.43945, 25.860233, 73.030975, 21.916737, 92.13138, 21.613392, 65.92115, 37.268906, 56.32748, 42.99927)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Water" unique_id=1974197447]
-position = Vector2(-2438.0308, 1448.4991)
+position = Vector2(2624.123, 1818.9562)
 rotation = 3.1415927
-scale = Vector2(-1017.8042, 1078.8336)
+scale = Vector2(-313.5898, 332.39325)
 mesh = SubResource("QuadMesh_kdubu")
 texture = ExtResource("1_0hol4")
 
