@@ -1,7 +1,10 @@
 extends Node2D
 
+signal puzzle_solved
+
 var field_scene = preload("Field.tscn")
 var fields: Array[Field] = []
+var _solved: bool = false
 
 """
 -1, -1, 0, 0, -1, -1, -1, -1, -1, -1
@@ -67,5 +70,7 @@ func _on_field_clicked(index: int, new_value: int):
 	for i in len(values):
 		if values[i] != solution[i]:
 			right = false
-	if right == true:
+	if right == true and not _solved:
+		_solved = true
 		print("correct!")
+		puzzle_solved.emit()

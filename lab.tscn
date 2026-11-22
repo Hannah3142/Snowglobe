@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://clabsnowglobe1"]
+
+[ext_resource type="Script" uid="uid://b7labsnowglobe" path="res://lab.gd" id="1_lab"]
+[ext_resource type="Texture2D" path="res://assets/research_station.png" id="2_bg"]
+[ext_resource type="Script" uid="uid://web3esrpo87n" path="res://character_body_2d.gd" id="3_player"]
+[ext_resource type="Texture2D" uid="uid://bb1sc1efhdkhe" path="res://assets/pixil-frame-0 (copy 1).png" id="4_penguin"]
+[ext_resource type="PackedScene" path="res://game_box.tscn" id="5_box"]
+[ext_resource type="PackedScene" uid="uid://bhubgamedocks1" path="res://hub_ui.tscn" id="6_hub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(2400, 80)
+
+[node name="Lab" type="Node2D"]
+script = ExtResource("1_lab")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_bg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(576, 580)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 6
+position = Vector2(220, 500)
+script = ExtResource("3_player")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.05463364, 0.05990783)
+texture = ExtResource("4_penguin")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
+position = Vector2(-2, 2)
+scale = Vector2(0.9027778, 0.78011775)
+polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -38.769234, 58.96546, -38.769234, -65.37475)
+
+[node name="PipesBox" parent="." instance=ExtResource("5_box")]
+z_index = 5
+position = Vector2(880, 350)
+scale = Vector2(0.55, 0.55)
+game_id = "pipes"
+after_solved = "continue"
+box_color = Color(0.12156863, 0.24705882, 0.38039216, 0.95)
+
+[node name="HubUI" parent="." instance=ExtResource("6_hub")]

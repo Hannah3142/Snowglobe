@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://tut3mh0wubmi"]
+
+[ext_resource type="Script" uid="uid://d8gameboxsnow1" path="res://game_box.gd" id="1_box"]
+
+[node name="GameBox" type="StaticBody2D" unique_id=1840010001]
+z_index = 5
+input_pickable = true
+script = ExtResource("1_box")
+
+[node name="Outline" type="Polygon2D" parent="." unique_id=1840010002]
+color = Color(0.7, 0.9, 1, 0.95)
+polygon = PackedVector2Array(-52, -40, 52, -40, 52, 40, -52, 40)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1840010003]
+color = Color(0.12, 0.42, 0.62, 0.95)
+polygon = PackedVector2Array(-46, -34, 46, -34, 46, 34, -46, 34)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1840010004]
+polygon = PackedVector2Array(-52, -40, 52, -40, 52, 40, -52, 40)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1840010005]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1840010006]
+polygon = PackedVector2Array(-64, -52, 64, -52, 64, 52, -64, 52)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_body_entered"]

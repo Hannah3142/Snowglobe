@@ -1,57 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhubgamedocks1"]
+[gd_scene load_steps=3 format=3 uid="uid://bhubgamedocks1"]
 
 [ext_resource type="Script" uid="uid://c8hubuixgames1" path="res://hub_ui.gd" id="1_hub"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_binary"]
-bg_color = Color(0.078431375, 0.21960784, 0.38039216, 0.92)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.49803922, 1, 0.83137256, 0.9)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-content_margin_left = 20.0
-content_margin_top = 16.0
-content_margin_right = 20.0
-content_margin_bottom = 16.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_binary_hover"]
-bg_color = Color(0.11764706, 0.38039216, 0.54901963, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.7, 0.9, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-content_margin_left = 20.0
-content_margin_top = 16.0
-content_margin_right = 20.0
-content_margin_bottom = 16.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_binary_pressed"]
-bg_color = Color(0.05, 0.16, 0.28, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.49803922, 1, 0.83137256, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-content_margin_left = 20.0
-content_margin_top = 16.0
-content_margin_right = 20.0
-content_margin_bottom = 16.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pipes"]
-bg_color = Color(0.078431375, 0.21960784, 0.38039216, 0.92)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frame"]
+bg_color = Color(0.05, 0.14, 0.26, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -61,86 +13,26 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-content_margin_left = 20.0
-content_margin_top = 16.0
-content_margin_right = 20.0
-content_margin_bottom = 16.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pipes_hover"]
-bg_color = Color(0.11764706, 0.38039216, 0.54901963, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.85, 0.96, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-content_margin_left = 20.0
-content_margin_top = 16.0
-content_margin_right = 20.0
-content_margin_bottom = 16.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pipes_pressed"]
-bg_color = Color(0.05, 0.16, 0.28, 0.95)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.7, 0.9, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-content_margin_left = 20.0
-content_margin_top = 16.0
-content_margin_right = 20.0
-content_margin_bottom = 16.0
 
 [node name="HubUI" type="CanvasLayer" unique_id=2103847561]
-layer = 10
+layer = 20
 script = ExtResource("1_hub")
 
-[node name="Root" type="MarginContainer" parent="." unique_id=2103847562]
-anchors_preset = 10
+[node name="Dim" type="ColorRect" parent="." unique_id=2103847562]
+visible = false
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 176.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0.02, 0.07, 0.14, 0.62)
+
+[node name="Frame" type="Panel" parent="." unique_id=2103847563]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 32
+theme_override_styles/panel = SubResource("StyleBoxFlat_frame")
 
-[node name="Games" type="HBoxContainer" parent="Root" unique_id=2103847563]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 24
-alignment = 1
-
-[node name="BinaryPuzzle" type="Button" parent="Root/Games" unique_id=2103847564]
-custom_minimum_size = Vector2(280, 128)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.96, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.49803922, 1, 0.83137256, 1)
-theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_binary")
-theme_override_styles/hover = SubResource("StyleBoxFlat_binary_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_binary_pressed")
-text = "Binary Puzzle"
-
-[node name="Pipes" type="Button" parent="Root/Games" unique_id=2103847565]
-custom_minimum_size = Vector2(280, 128)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.96, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.7, 0.9, 1, 1)
-theme_override_font_sizes/font_size = 26
-theme_override_styles/normal = SubResource("StyleBoxFlat_pipes")
-theme_override_styles/hover = SubResource("StyleBoxFlat_pipes_hover")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pipes_pressed")
-text = "Pipes"
-
-[connection signal="pressed" from="Root/Games/BinaryPuzzle" to="." method="_on_binary_puzzle_pressed"]
-[connection signal="pressed" from="Root/Games/Pipes" to="." method="_on_pipes_pressed"]
+[node name="Host" type="Node2D" parent="." unique_id=2103847564]

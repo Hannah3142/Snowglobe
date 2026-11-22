@@ -1,9 +1,12 @@
 extends Node2D
 
+signal puzzle_solved
+
 # end pipes can't rotate
 
 var pipe_scene = preload("Pipe.tscn")
 var pipes: Array[Pipe] = []
+var _solved: bool = false
 
 const parts = ["e", "s", "c", "c", "s", "s", "c", "c", "s", "c", "s", "c", "c", "s", "c", "s", "s", "c", "s", "s", "s", "c", "c", "c", "s", "c", "c", "c", "s", "c", "c", "c", "s", "s", "c", "c", "s", "s", "c", "c", "c", "s", "e", "s", "s", "s", "c", "c", "c"]
 const correct_rotation = [0, 0, 270, 180, 0, 0, 270, 180, 0, 0, 90, 180, 270, 90, 90, 0, 0, 0, 90, 90, 90, 180, 270, 180, 0, 0, 90, 0, 90, 90, 0, 180, 0, 0, 270, 90, 0, 0, 0, 180, 270, 90, 0, 0, 0, 0, 0, 90, 0]
@@ -49,5 +52,7 @@ func _on_pipe_rotated(pipe: float, rotation: float, kind: String):
 	for i in len(correct_parts):
 		if correct_parts[i] == false:
 			correct = false
-	if correct == true:
+	if correct == true and not _solved:
+		_solved = true
 		print("correct!")
+		puzzle_solved.emit()
