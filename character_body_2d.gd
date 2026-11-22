@@ -4,6 +4,10 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var is_in_water: bool = false
 
+
+func _ready() -> void:
+	add_to_group("player")
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

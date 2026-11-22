@@ -3,7 +3,7 @@ extends CanvasLayer
 const GAMES := {
 	"binary": {
 		"scene": "res://binary-puzzle/Main.tscn",
-		"bounds": Rect2(95, 100, 400, 400),
+		"bounds": Rect2(80, 80, 680, 450),
 	},
 	"pipes": {
 		"scene": "res://pipes/main.tscn",

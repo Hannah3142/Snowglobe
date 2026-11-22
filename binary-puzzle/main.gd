@@ -40,6 +40,29 @@ var y_offset = 0
 func _ready() -> void:
 	queue_redraw()
 	spawn_text_fields()
+	_add_rules()
+
+
+func _add_rules() -> void:
+	var rules := Label.new()
+	rules.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	rules.position = Vector2(520, 108)
+	rules.size = Vector2(240, 380)
+	rules.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	rules.add_theme_font_size_override("font_size", 16)
+	rules.add_theme_color_override("font_color", Color(0.85, 0.96, 1, 1))
+	rules.text = "Rules
+
+Fill every empty cell with 0 or 1.
+
+Each row and each column has five 0s and five 1s.
+
+No more than two of the same number may sit next to each other.
+
+No two rows may be the same, and no two columns may be the same.
+
+Click a cell to cycle blank, 0, then 1."
+	add_child(rules)
 
 func spawn_text_fields():
 	fields.clear()
