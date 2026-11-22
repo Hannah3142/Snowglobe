@@ -1,6 +1,6 @@
 extends Node2D
 
-var field_scene = preload("res://Field.tscn")
+var field_scene = preload("Field.tscn")
 var fields: Array[Field] = []
 
 """

@@ -2,7 +2,7 @@ extends Node2D
 
 # end pipes can't rotate
 
-var pipe_scene = preload("res://Pipe.tscn")
+var pipe_scene = preload("Pipe.tscn")
 var pipes: Array[Pipe] = []
 
 const parts = ["e", "s", "c", "c", "s", "s", "c", "c", "s", "c", "s", "c", "c", "s", "c", "s", "s", "c", "s", "s", "s", "c", "c", "c", "s", "c", "c", "c", "s", "c", "c", "c", "s", "s", "c", "c", "s", "s", "c", "c", "c", "s", "e", "s", "s", "s", "c", "c", "c"]

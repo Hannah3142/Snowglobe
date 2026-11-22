@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://jcys1uces8gp" path="res://assets/IMG_1825.hJaIesRk.PNG" id="1_q6r6c"]
 [ext_resource type="Script" uid="uid://web3esrpo87n" path="res://character_body_2d.gd" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://bb1sc1efhdkhe" path="res://assets/pixil-frame-0 (copy 1).png" id="5_q6r6c"]
+[ext_resource type="PackedScene" uid="uid://bhubgamedocks1" path="res://hub_ui.tscn" id="6_hub"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_kdubu"]
 
@@ -139,6 +140,8 @@ scale = Vector2(1000, 20)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=262062568]
 polygon = PackedVector2Array(-0.029999997, -0.54999995, 0.08499999, 0.19999999, 0.33799997, 0.59999996, 0.46399996, 0.99999994, 0.53999996, 2.35, 0.53999996, 2.6999998, 0.501, 3.1, 0.43399996, 2.9999998, 0.276, 2.3999999, 0.17699999, 2.3999999, -0.036, 2.3999999, -0.16399999, 2.6499999, -0.40399998, 2.6999998, -0.64799994, 1.9499999, -1.0669999, 3.1, -1.0699999, -27.849998, -0.95899993, -25.349998, -0.90299994, -24.249998, -0.8669999, -22.849998, -0.78999996, -20.349998, -0.71799994, -17.4, -0.63499993, -13.749999, -0.552, -10.799999, -0.49099997, -8.299999, -0.40999997, -6.0999994, -0.31499997, -4.4999995, -0.27499998, -3.4499998, -0.09799999, -1.4999999)
+
+[node name="HubUI" parent="." unique_id=2103847560 instance=ExtResource("6_hub")]
 
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]

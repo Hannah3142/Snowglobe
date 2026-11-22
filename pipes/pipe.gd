@@ -20,13 +20,13 @@ func setup(t: String, x: float, y: float, n: float) -> void:
 	sprite = Sprite2D.new()
 
 	if type == "e":
-		sprite.texture = load("res://assets/end.png")
+		sprite.texture = load("res://pipes/assets/end.png")
 	if type == "s":
-		sprite.texture = load("res://assets/straight.png")
+		sprite.texture = load("res://pipes/assets/straight.png")
 	if type == "i":
-		sprite.texture = load("res://assets/intersection.png")
+		sprite.texture = load("res://pipes/assets/intersection.png")
 	if type == "c":
-		sprite.texture = load("res://assets/corner.png")
+		sprite.texture = load("res://pipes/assets/corner.png")
 
 	add_child(sprite)
 	scale.x = 0.3
