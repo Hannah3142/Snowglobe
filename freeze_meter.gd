@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 const HUB_SCENE := "res://node_2d.tscn"
-const WATER_SECONDS_TO_FREEZE := 22.0
-const LAND_SECONDS_TO_THAW := 8.0
+const WATER_SECONDS_TO_FREEZE := 36.0
+const LAND_SECONDS_TO_THAW := 12.0
 
 var freeze: float = 0.0
 var _restarting: bool = false
