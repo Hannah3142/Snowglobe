@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c7nyso8qgvnwu"]
+
+[ext_resource type="Texture2D" uid="uid://cw5cruytvqk4" path="res://assets/4B4BCC97-E1F2-4CC0-A027-E828382A59F7.webp" id="1_0hol4"]
+[ext_resource type="Texture2D" uid="uid://cu2u03mafn74b" path="res://assets/IMG_20261120_200116_094.webp" id="1_epypp"]
+[ext_resource type="Script" uid="uid://web3esrpo87n" path="res://character_body_2d.gd" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://ht7lfqceojki" path="res://assets/pixil-frame-0.png" id="4_q6r6c"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kdubu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhlid"]
+size = Vector2(1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dhlid"]
+
+[node name="Node2D" type="Node2D" unique_id=2047412558]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=419077869]
+position = Vector2(104, -62.999996)
+scale = Vector2(0.9027778, 0.78011775)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1003537648]
+scale = Vector2(14.788245, 16.902922)
+polygon = PackedVector2Array(-1, -1.5, -1, 1.5, 1, 1.5, 1, -1.5)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D" unique_id=1974197447]
+position = Vector2(0.3157351, 0.04786873)
+rotation = 3.1415927
+scale = Vector2(30.383934, 51.370056)
+mesh = SubResource("QuadMesh_kdubu")
+texture = ExtResource("1_0hol4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1942114233]
+scale = Vector2(1000, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=446869140]
+shape = SubResource("RectangleShape2D_dhlid")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=188124296]
+mesh = SubResource("BoxMesh_dhlid")
+texture = ExtResource("1_epypp")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=805890863]
+position = Vector2(0, -60)
+script = ExtResource("1_wtcfe")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=668831937]
+position = Vector2(0, -1.9073486e-06)
+scale = Vector2(0.046181176, 0.05990783)
+texture = ExtResource("4_q6r6c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D" unique_id=916897459]
+position = Vector2(-2, 1.9999996)
+scale = Vector2(0.9027778, 0.78011775)
+polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -27.692308, 58.96546, -27.692308, -64.092896)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=206278875]
+zoom = Vector2(2, 2)
