@@ -4,8 +4,8 @@ signal puzzle_solved
 
 # end pipes can't rotate
 
-var pipe_scene = preload("Pipe.tscn")
-var _pipe_script := preload("pipe.gd")
+var pipe_scene = preload("res://assets/pipes/Pipe.tscn")
+var _pipe_script := preload("res://assets/pipes/pipe.gd")
 var pipes: Array[Node2D] = []
 var _solved: bool = false
 

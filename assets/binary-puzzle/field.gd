@@ -40,6 +40,8 @@ func setup(v: float, n: float, x: float, y: float) -> void:
 	position = Vector2(100 + x_offset, 100 + y_offset)
 
 func _input(event):
+	if text_field == null or not is_inside_tree():
+		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var local := make_canvas_position_local(event.position)
 		if Rect2(Vector2.ZERO, Vector2(40, 40)).has_point(local) and number not in unchangable:

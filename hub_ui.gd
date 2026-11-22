@@ -61,6 +61,8 @@ func close() -> void:
 	if _game != null:
 		if _game.has_signal("puzzle_solved") and _game.is_connected("puzzle_solved", _on_puzzle_solved):
 			_game.disconnect("puzzle_solved", _on_puzzle_solved)
+		_game.process_mode = Node.PROCESS_MODE_DISABLED
+		_game.set_process_input(false)
 		_game.queue_free()
 		_game = null
 	visible = false

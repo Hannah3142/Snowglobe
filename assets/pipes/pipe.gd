@@ -34,6 +34,8 @@ func setup(t: String, x: float, y: float, n: float) -> void:
 	pipe_rotated.emit(number, rotation, type)
 
 func _input(event):
+	if sprite == null or not is_instance_valid(sprite) or not is_inside_tree():
+		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var mouse_position = sprite.to_local(get_global_mouse_position())
 		if sprite.get_rect().has_point(mouse_position):

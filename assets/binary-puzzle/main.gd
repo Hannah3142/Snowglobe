@@ -2,8 +2,8 @@ extends Node2D
 
 signal puzzle_solved
 
-var field_scene = preload("Field.tscn")
-var _field_script := preload("field.gd")
+var field_scene = preload("res://assets/binary-puzzle/Field.tscn")
+var _field_script := preload("res://assets/binary-puzzle/field.gd")
 var fields: Array[Node2D] = []
 var _solved: bool = false
 
