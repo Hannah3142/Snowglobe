@@ -14,13 +14,13 @@ size = Vector2(1, 1)
 
 [node name="Node2D" type="Node2D" unique_id=2047412558]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=419077869]
+[node name="Area2D" type="Area2D" parent="." unique_id=419077869 groups=["water"]]
 position = Vector2(104, -62.999996)
 scale = Vector2(0.9027778, 0.78011775)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1003537648]
 scale = Vector2(14.788245, 16.902922)
-polygon = PackedVector2Array(-1, -1.5, -1, 1.5, 1, 1.5, 1, -1.5)
+polygon = PackedVector2Array(-1, -1.5, -1, 1.5, 1, 1.5, 8.164489, -6.370262)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D" unique_id=1974197447]
 position = Vector2(0.3157351, 0.04786873)
@@ -55,3 +55,13 @@ polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -27.692
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=206278875]
 zoom = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=1383746690]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="CharacterBody2D/Area2D" unique_id=1355993357]
+position = Vector2(-2, 2)
+scale = Vector2(0.9027778, 0.78011775)
+polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -27.692308, 58.96546, -27.692308, -64.092896)
+
+[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_exited"]
