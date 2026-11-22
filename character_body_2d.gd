@@ -9,7 +9,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_in_water:
 		if not zeroed_yet:
-			velocity = get_gravity() * 0.0 # Zero velocity so you can't jump in and fall super fast through the water
+			velocity = get_gravity() * 0.4 # Zero velocity so you can't jump in and fall super fast through the water
 			zeroed_yet = true
 		velocity += get_gravity() * delta * 0.2
 		
