@@ -5,10 +5,13 @@ extends Node2D
 var pipe_scene = preload("res://Pipe.tscn")
 var pipes: Array[Pipe] = []
 
-const parts = ["e", "c", "c", "s", "i", "i", "c", "c", "e"]
-const correct_rotation = [0, 180, 270, 90, 90, 270, 90, 0, 180]
+const parts = ["e", "s", "c", "c", "s", "s", "c", "c", "s", "c", "s", "c", "c", "s", "c", "s", "s", "c", "s", "s", "s", "c", "c", "c", "s", "c", "c", "c", "s", "c", "c", "c", "s", "s", "c", "c", "s", "s", "c", "c", "c", "s", "e", "s", "s", "s", "c", "c", "c"]
+const correct_rotation = [0, 0, 270, 180, 0, 0, 270, 180, 0, 0, 90, 180, 270, 90, 90, 0, 0, 0, 90, 90, 90, 180, 270, 180, 0, 0, 90, 0, 90, 90, 0, 180, 0, 0, 270, 90, 0, 0, 0, 180, 270, 90, 0, 0, 0, 0, 0, 90, 0]
+
+#const parts = ["e", "c", "c", "s", "i", "i", "c", "c", "e"]
+#const correct_rotation = [0, 180, 270, 90, 90, 270, 90, 0, 180]
 var correct_parts = []
-var size = 3
+var size = 7
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

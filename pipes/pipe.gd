@@ -29,8 +29,8 @@ func setup(t: String, x: float, y: float, n: float) -> void:
 		sprite.texture = load("res://assets/corner.png")
 
 	add_child(sprite)
-	scale.x = 3
-	scale.y = 3
+	scale.x = 0.3
+	scale.y = 0.3
 	position = Vector2(100+x_offset, 100+y_offset)
 	pipe_rotated.emit(number, rotation, type)
 
