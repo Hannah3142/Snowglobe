@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpdimpfvbbkro"]
 
-[ext_resource type="Script" uid="uid://ciwbiekgsiic8" path="res://pipes/pipe.gd" id="1_1adrp"]
+[ext_resource type="Script" uid="uid://ciwbiekgsiic8" path="res://assets/pipes/pipe.gd" id="1_1adrp"]
 
 [node name="Pipe" type="Node2D" unique_id=354631895]
 script = ExtResource("1_1adrp")

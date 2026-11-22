@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://pipes/assets/straight.png"
+source_file="res://assets/pipes/assets/straight.png"
 dest_files=["res://.godot/imported/straight.png-2c1d4c4322969691c4035aa090e51fff.ctex"]
 
 [params]

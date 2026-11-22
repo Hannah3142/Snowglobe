@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bptxauix6qsqm"]
 
-[ext_resource type="Script" uid="uid://djdqb7xxsko51" path="res://binary-puzzle/main.gd" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://djdqb7xxsko51" path="res://assets/binary-puzzle/main.gd" id="1_glv2v"]
 
 [node name="Main" type="Node2D" unique_id=1184382766]
 script = ExtResource("1_glv2v")

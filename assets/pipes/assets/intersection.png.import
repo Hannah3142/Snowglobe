@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://colodjftp3i6l"
-path="res://.godot/imported/end.png-4caad3bd0989ab1fe87dded845da9859.ctex"
+uid="uid://bxgc0fhw5dyyo"
+path="res://.godot/imported/intersection.png-8524e6b2f20296aa62620612e1cd53cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pipes/assets/end.png"
-dest_files=["res://.godot/imported/end.png-4caad3bd0989ab1fe87dded845da9859.ctex"]
+source_file="res://assets/pipes/assets/intersection.png"
+dest_files=["res://.godot/imported/intersection.png-8524e6b2f20296aa62620612e1cd53cc.ctex"]
 
 [params]
 

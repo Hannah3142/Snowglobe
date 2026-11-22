@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6hlrxkwplmpg"
-path="res://.godot/imported/icon.svg-0cd8bd8ff4be3e5880c4dd32f7b042b8.ctex"
+uid="uid://dvpusga80l251"
+path="res://.godot/imported/corner.png-34bd24c7f18653cddcf908fc310e28b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://binary-puzzle/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-0cd8bd8ff4be3e5880c4dd32f7b042b8.ctex"]
+source_file="res://assets/pipes/assets/corner.png"
+dest_files=["res://.godot/imported/corner.png-34bd24c7f18653cddcf908fc310e28b5.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

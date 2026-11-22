@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bip8610othbdf"]
 
-[ext_resource type="Script" uid="uid://dp2uctthjlqh1" path="res://binary-puzzle/field.gd" id="1_8j5rm"]
+[ext_resource type="Script" uid="uid://dp2uctthjlqh1" path="res://assets/binary-puzzle/field.gd" id="1_8j5rm"]
 
 [node name="Field" type="Node2D" unique_id=1177927749]
 script = ExtResource("1_8j5rm")
