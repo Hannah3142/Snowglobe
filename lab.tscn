@@ -40,12 +40,12 @@ position = Vector2(-2, 2)
 scale = Vector2(0.9027778, 0.78011775)
 polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -38.769234, 58.96546, -38.769234, -65.37475)
 
-[node name="PipesBox" parent="." instance=ExtResource("5_box")]
+[node name="BinaryPuzzleBox" parent="." instance=ExtResource("5_box")]
 z_index = 5
 position = Vector2(880, 350)
-scale = Vector2(0.55, 0.55)
-game_id = "pipes"
+scale = Vector2(0.4, 0.4)
+game_id = "binary"
 after_solved = "continue"
-box_color = Color(0.12156863, 0.24705882, 0.38039216, 0.95)
+box_color = Color(0.078431375, 0.32156864, 0.4509804, 0.95)
 
 [node name="HubUI" parent="." instance=ExtResource("6_hub")]

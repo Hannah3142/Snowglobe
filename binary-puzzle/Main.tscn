@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bptxauix6qsqm"]
+[gd_scene load_steps=2 format=3 uid="uid://bptxauix6qsqm"]
 
 [ext_resource type="Script" uid="uid://djdqb7xxsko51" path="res://binary-puzzle/main.gd" id="1_glv2v"]
-[ext_resource type="PackedScene" uid="uid://bq8hudbacksnow" path="res://puzzle_hud.tscn" id="2_hud"]
 
 [node name="Main" type="Node2D" unique_id=1184382766]
 script = ExtResource("1_glv2v")
-
-[node name="PuzzleHud" parent="." unique_id=1184382767 instance=ExtResource("2_hud")]
