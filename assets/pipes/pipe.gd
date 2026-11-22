@@ -1,6 +1,5 @@
 extends Node2D
 
-class_name PipePiece
 var sprite: Sprite2D
 
 @export var t: String

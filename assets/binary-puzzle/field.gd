@@ -1,6 +1,5 @@
 extends Node2D
 
-class_name BinaryCell
 var text_field: Label
 
 #values[i], i, x_offset, y_offset
