@@ -1,67 +1,144 @@
 [gd_scene format=3 uid="uid://c7nyso8qgvnwu"]
 
 [ext_resource type="Texture2D" uid="uid://cw5cruytvqk4" path="res://assets/4B4BCC97-E1F2-4CC0-A027-E828382A59F7.webp" id="1_0hol4"]
-[ext_resource type="Texture2D" uid="uid://cu2u03mafn74b" path="res://assets/IMG_20261120_200116_094.webp" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://jcys1uces8gp" path="res://assets/IMG_1825.hJaIesRk.PNG" id="1_q6r6c"]
 [ext_resource type="Script" uid="uid://web3esrpo87n" path="res://character_body_2d.gd" id="1_wtcfe"]
-[ext_resource type="Texture2D" uid="uid://ht7lfqceojki" path="res://assets/pixil-frame-0.png" id="4_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://bb1sc1efhdkhe" path="res://assets/pixil-frame-0 (copy 1).png" id="5_q6r6c"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_kdubu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhlid"]
-size = Vector2(1, 1)
+[sub_resource type="Shader" id="Shader_0hol4"]
+code = "shader_type canvas_item;
 
-[sub_resource type="BoxMesh" id="BoxMesh_dhlid"]
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D noise_tex : repeat_enable;
+
+uniform vec4 water_tint : source_color = vec4(0.1, 0.55, 0.85, 0.5);
+uniform vec4 highlight_color : source_color = vec4(0.7, 0.9, 1.0, 0.45);
+uniform vec2 scroll_speed = vec2(0.05, 0.02);
+uniform float distortion_strength : hint_range(0.0, 0.1) = 0.025;
+uniform float ripple_scale = 0.004; // Smaller value = larger waves in world pixels
+
+varying vec2 world_pos;
+
+void vertex() {
+	world_pos = (MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0)).xy;
+}
+
+void fragment() {
+	// Use world position
+	vec2 base_uv = world_pos * ripple_scale;
+	
+	// Two layers of scrolling noise
+	vec2 uv1 = base_uv + (TIME * scroll_speed);
+	vec2 uv2 = (base_uv * 1.4) - (TIME * scroll_speed * 0.7);
+	
+	float n1 = texture(noise_tex, uv1).r;
+	float n2 = texture(noise_tex, uv2).r;
+	
+	// Distort the screen behind the water (put things you want to distort above the water so godot draws them first)
+	vec2 noise_offset = vec2(n1 - 0.5, n2 - 0.5);
+	vec2 distorted_screen_uv = SCREEN_UV + (noise_offset * distortion_strength);
+	vec4 bg_color = texture(SCREEN_TEXTURE, distorted_screen_uv);
+	
+	vec4 water = mix(bg_color, water_tint, water_tint.a);
+	float ripple = smoothstep(0.55, 0.72, (n1 + n2) * 0.5);
+	water = mix(water, highlight_color, ripple * highlight_color.a);
+	
+	COLOR = water;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0hol4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q6r6c"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_0hol4")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhlid"]
+shader = SubResource("Shader_0hol4")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_q6r6c")
+shader_parameter/water_tint = Color(0.1, 0.55, 0.85, 0.5)
+shader_parameter/highlight_color = Color(0.7, 0.9, 1, 0.45)
+shader_parameter/scroll_speed = Vector2(0.05, 0.02)
+shader_parameter/distortion_strength = 0.0570000027075
+shader_parameter/ripple_scale = 0.004
 
 [node name="Node2D" type="Node2D" unique_id=2047412558]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=419077869 groups=["water"]]
-position = Vector2(104, -62.999996)
+[node name="IceBergs" type="StaticBody2D" parent="." unique_id=812808967]
+position = Vector2(1004, 41)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="IceBergs" unique_id=1428864010]
+position = Vector2(11, -179)
+polygon = PackedVector2Array(1172, -715, 519, -713, 359, -457, 318, -370, 273, -365, 101, -492, 4, -501, -73, -408, -138, -97, -90, 66, -17, 234, 53, 511, 74, 739, 88, 788, 173, 888, 353, 806, 401, 780, 665, 798, 767, 821, 828, 800, 896, 737, 943, 491, 970, 370, 965, 223, 1050, -14, 1058, -155, 1097, -334, 1082, -525, 1115, -607)
+
+[node name="Polygon2D" type="Polygon2D" parent="IceBergs" unique_id=1905197613]
+visible = false
+polygon = PackedVector2Array(-54, -600, -112, -410, -122, -274, -57, -46, -3, 52, 10, 114, 54, 289, 130, 551, 323, 464, 697, 418, 1176, -896, 520, -878, 329, -549, 270, -552, 122, -669, 25, -677)
+
+[node name="Img1825_hJaIesRk" type="Sprite2D" parent="IceBergs" unique_id=661617663]
+position = Vector2(-28, 505)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_q6r6c")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="IceBergs" unique_id=1014910000]
+polygon = PackedVector2Array(-1390, 45, -1372, 76, -1327.144, 266.81808, -1124, 1131, -1101, 1161, -729, 1193, 59, 1246, 164, 902, 258, 925, 407, 1001, 509, 1044, 814, 1104, 1163, 1166, 1443, 1223, 1620, 1255, 1774, 1276, 1790, 1317, 1767, 1361, 1737, 1363, 1431, 1652, 1354, 1754, 1292, 1894, 245, 1903, 231, 1784, -1723, 1333, -1434, 54)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=805890863]
+position = Vector2(0, -60)
+script = ExtResource("1_wtcfe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=668831937]
+position = Vector2(-4.9573708, -1.9073486e-06)
+scale = Vector2(0.05463364, 0.05990783)
+texture = ExtResource("5_q6r6c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player" unique_id=916897459]
+position = Vector2(-2, 1.9999996)
 scale = Vector2(0.9027778, 0.78011775)
+polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -38.769234, 58.96546, -38.769234, -65.37475)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1003537648]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=206278875]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.5
+
+[node name="Area2D" type="Area2D" parent="Player" unique_id=1383746690]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Player/Area2D" unique_id=1355993357]
+position = Vector2(-2, 2)
+scale = Vector2(0.9027778, 0.78011775)
+polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -38.769234, 58.96546, -38.769234, -64.09289)
+
+[node name="Water" type="Area2D" parent="." unique_id=419077869 groups=["water"]]
+position = Vector2(55.999985, 10.000011)
+scale = Vector2(0.9027778, 0.78011775)
+gravity_space_override = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water" unique_id=1003537648]
+position = Vector2(396.55383, 466.59622)
 scale = Vector2(14.788245, 16.902922)
-polygon = PackedVector2Array(-1, -1.5, -1, 1.5, 1, 1.5, 8.164489, -6.370262)
+polygon = PackedVector2Array(49.061832, 66.43274, -39.698887, 59.45578, -57.37613, -22.675102, 19.325119, -19.944988, 32.95757, -18.428259, 43.668774, -21.158371, 45.990788, -10.768776, 48.088085, -3.7918224, 51.009327, 21.158371, 55.653347, 28.05949, 59.997753, 29.197037, 66.43945, 25.860233, 73.030975, 21.916737, 92.13138, 21.613392, 65.92115, 37.268906, 56.32748, 42.99927)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D" unique_id=1974197447]
-position = Vector2(0.3157351, 0.04786873)
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Water" unique_id=1974197447]
+position = Vector2(-2438.0308, 1448.4991)
 rotation = 3.1415927
-scale = Vector2(30.383934, 51.370056)
+scale = Vector2(-1017.8042, 1078.8336)
 mesh = SubResource("QuadMesh_kdubu")
 texture = ExtResource("1_0hol4")
+
+[node name="WaterTex" type="Polygon2D" parent="Water" unique_id=1544687900]
+material = SubResource("ShaderMaterial_dhlid")
+position = Vector2(169.47693, 133.31323)
+polygon = PackedVector2Array(325.66156, -64.09293, 484.06158, 3.8455353, 559.9494, 12.402283, 700.0616, 28.200836, 870.64624, -11.536758, 899.44617, 121.77646, 938.21545, 285.85425, 978.0924, 685.7939, 1089.9692, 821.67084, 1312.6155, 699.89435, 1053.4154, 1072.9149, 955.9385, 1483.1095, 687.87695, 1483.1095, 591.50775, 1452.3448, 536.1231, 1467.7272, 136.24619, 1439.5264, -132.92307, 1417.7347, -340.06152, 1385.6882, -453.04614, 876.7907, -630.277, 56.401703, -651.3231, -71.78408, -252.55385, -87.166374, 99.69232, -80.75709)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1942114233]
 scale = Vector2(1000, 20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=446869140]
-shape = SubResource("RectangleShape2D_dhlid")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=262062568]
+polygon = PackedVector2Array(-0.029999997, -0.54999995, 0.08499999, 0.19999999, 0.33799997, 0.59999996, 0.46399996, 0.99999994, 0.53999996, 2.35, 0.53999996, 2.6999998, 0.501, 3.1, 0.43399996, 2.9999998, 0.276, 2.3999999, 0.17699999, 2.3999999, -0.036, 2.3999999, -0.16399999, 2.6499999, -0.40399998, 2.6999998, -0.64799994, 1.9499999, -1.0669999, 3.1, -1.0699999, -27.849998, -0.95899993, -25.349998, -0.90299994, -24.249998, -0.8669999, -22.849998, -0.78999996, -20.349998, -0.71799994, -17.4, -0.63499993, -13.749999, -0.552, -10.799999, -0.49099997, -8.299999, -0.40999997, -6.0999994, -0.31499997, -4.4999995, -0.27499998, -3.4499998, -0.09799999, -1.4999999)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=188124296]
-mesh = SubResource("BoxMesh_dhlid")
-texture = ExtResource("1_epypp")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=805890863]
-position = Vector2(0, -60)
-script = ExtResource("1_wtcfe")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=668831937]
-position = Vector2(0, -1.9073486e-06)
-scale = Vector2(0.046181176, 0.05990783)
-texture = ExtResource("4_q6r6c")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D" unique_id=916897459]
-position = Vector2(-2, 1.9999996)
-scale = Vector2(0.9027778, 0.78011775)
-polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -27.692308, 58.96546, -27.692308, -64.092896)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=206278875]
-zoom = Vector2(2, 2)
-
-[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=1383746690]
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="CharacterBody2D/Area2D" unique_id=1355993357]
-position = Vector2(-2, 2)
-scale = Vector2(0.9027778, 0.78011775)
-polygon = PackedVector2Array(32.123077, -64.092896, 32.123077, 58.96546, -27.692308, 58.96546, -27.692308, -64.092896)
-
-[connection signal="area_entered" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="CharacterBody2D/Area2D" to="CharacterBody2D" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]
