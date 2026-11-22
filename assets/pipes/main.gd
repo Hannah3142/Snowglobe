@@ -5,7 +5,7 @@ signal puzzle_solved
 # end pipes can't rotate
 
 var pipe_scene = preload("Pipe.tscn")
-var pipes: Array[Pipe] = []
+var pipes: Array[PipePiece] = []
 var _solved: bool = false
 
 const parts = ["e", "s", "c", "c", "s", "s", "c", "c", "s", "c", "s", "c", "c", "s", "c", "s", "s", "c", "s", "s", "s", "c", "c", "c", "s", "c", "c", "c", "s", "c", "c", "c", "s", "s", "c", "c", "s", "s", "c", "c", "c", "s", "e", "s", "s", "s", "c", "c", "c"]
@@ -25,10 +25,10 @@ func _ready() -> void:
 func spawn_pipes():
 	pipes.clear()
 	for child in get_children():
-		if child is Pipe:
+		if child is PipePiece:
 			child.free()
 	for i in len(parts):
-		var pipe = pipe_scene.instantiate() as Pipe
+		var pipe = pipe_scene.instantiate() as PipePiece
 		var x_offset = 0
 		var y_offset = 0
 		if (i)%size != 0:

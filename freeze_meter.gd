@@ -24,6 +24,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _restarting:
 		return
+	var popup := get_tree().get_first_node_in_group("puzzle_popup")
+	if popup != null and popup.has_method("is_open") and popup.is_open():
+		return
 	var player := get_tree().get_first_node_in_group("player")
 	var in_water: bool = player != null and bool(player.get("is_in_water"))
 	if in_water:

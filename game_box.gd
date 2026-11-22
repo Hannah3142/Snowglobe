@@ -23,11 +23,12 @@ func _open() -> void:
 	popup.open_game(game_id, after_solved)
 
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+func _on_input_event(viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_open()
+		viewport.set_input_as_handled()
+		_open.call_deferred()
 
 
 func _on_area_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		_open()
+		_open.call_deferred()

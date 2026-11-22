@@ -3,7 +3,7 @@ extends Node2D
 signal puzzle_solved
 
 var field_scene = preload("Field.tscn")
-var fields: Array[Field] = []
+var fields: Array[BinaryCell] = []
 var _solved: bool = false
 
 """
@@ -62,10 +62,10 @@ No duplicate rows or columns."
 func spawn_text_fields():
 	fields.clear()
 	for child in get_children():
-		if child is Field:
+		if child is BinaryCell:
 			child.free()
 	for i in len(values):
-		var field = field_scene.instantiate() as Field
+		var field = field_scene.instantiate() as BinaryCell
 		x_offset = 0
 		y_offset = 0
 		if i%size != 0:
