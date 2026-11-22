@@ -3,16 +3,27 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var is_in_water: bool = false
+var zeroed_yet: bool = false
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	
+	if is_in_water:
+		if not zeroed_yet:
+			velocity = get_gravity() * 0.0 # Zero velocity so you can't jump in and fall super fast through the water
+			zeroed_yet = true
+		velocity += get_gravity() * delta * 0.2
+		
+		velocity.y = move_toward(velocity.y, 0.0, 150.0 * delta)
+	else:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 
-	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or is_in_water):
-		velocity.y = JUMP_VELOCITY
-
+		if is_in_water:
+			velocity.y += JUMP_VELOCITY * 0.5
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -29,4 +40,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("water"):
+		zeroed_yet = false
 		is_in_water = false
