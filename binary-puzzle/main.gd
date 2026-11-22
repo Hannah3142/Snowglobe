@@ -46,11 +46,11 @@ func _ready() -> void:
 func _add_rules() -> void:
 	var rules := Label.new()
 	rules.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	rules.position = Vector2(95, 512)
-	rules.size = Vector2(400, 118)
+	rules.position = Vector2(100, 508)
+	rules.size = Vector2(400, 72)
 	rules.autowrap_mode = TextServer.AUTOWRAP_OFF
-	rules.add_theme_font_size_override("font_size", 15)
-	rules.add_theme_constant_override("line_spacing", 3)
+	rules.add_theme_font_size_override("font_size", 14)
+	rules.add_theme_constant_override("line_spacing", 2)
 	rules.add_theme_color_override("font_color", Color(0.85, 0.96, 1, 1))
 	rules.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	rules.text = "Fill blanks with 0 or 1.  Click to cycle.
@@ -78,8 +78,8 @@ func spawn_text_fields():
 
 func _draw():
 	for i in len(values):
-		x_offset = (i%size)*40+95
-		y_offset = floor(i/size)*40+102
+		x_offset = (i%size)*40+100
+		y_offset = floor(i/size)*40+100
 		draw_rect(Rect2(x_offset, y_offset, 40.0, 40.0), Color.GRAY, false, 1.0)
 
 func _on_field_clicked(index: int, new_value: int):
